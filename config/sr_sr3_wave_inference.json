@@ -1,0 +1,68 @@
+{
+    "name": "InferenceTest",
+    "phase": "val",
+    "gpu_ids": [
+        0
+    ],
+    "path": {
+        "log": "",
+        "tb_logger": "",
+        "results": "",
+        "checkpoint": "",
+        "resume_state": ""
+    },
+    "datasets": {
+        "val": {
+            "name": "Sentinel2PlanetScope",
+            "dataroot": "",
+            "mode": "HR",
+            "datatype": "img",
+            "l_resolution": 60,
+            "r_resolution": 200,
+            "batch_size": 2,
+            "num_workers": 16,
+            "use_shuffle": false,
+            "data_len": -1
+        }
+    },
+    "model": {
+        "which_model_G": "wave",
+        "finetune_norm": false,
+        "unet": {
+            "in_channel": 32,
+            "out_channel": 16,
+            "inner_channel": 128,
+            "norm_groups": 16,
+            "channel_multiplier": [
+                1,
+                2,
+                4,
+                4,
+                8,
+                8,
+                16
+            ],
+            "attn_res": [
+                16
+            ],
+            "res_blocks": 3,
+            "dropout": 0
+        },
+        "beta_schedule": {
+            "val": {
+                "schedule": "linear",
+                "n_timestep": 2000,
+                "linear_start": 1e-6,
+                "linear_end": 1e-2
+            }
+        },
+        "diffusion": {
+            "image_size": 192,
+            "channels": 4,
+            "conditional": true
+        }
+    },
+    "wandb": {
+        "project": "sr_ffhq"
+    }
+}

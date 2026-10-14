@@ -1,0 +1,17 @@
+original_data_from_lucas/
+*__pycache__*
+*core.*
+*.slurm*
+configuration_inference_default.py
+configuration_default.py
+data_old.py
+logs/
+CM/
+*.sbatch
+archive/
+*.ckpt
+*.pth
+*.tif
+*.png
+*.csv
+venv/
